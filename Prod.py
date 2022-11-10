@@ -1,10 +1,21 @@
-from PIL import Image
-from PIL.ExifTags import TAGS
 
-img = Image.open('Capture001.png')
-info = img._getexif()
-print(info)
+import PathService
 
-# for k, v in info.items():
-#     nice = TAGS.get(k, k)
-#     # print('%s (%s) = %s' % (nice, k, v))
+path = "./img"
+
+print('=======================================')
+pathInfo = PathService.explorPath(path)
+print(pathInfo)
+print('=======================================')
+
+listFiles = PathService.getListFiles(path)
+print(listFiles)
+print('=======================================')
+
+listPaths = PathService.getListPaths(path)
+print(listPaths)
+print('=======================================')
+
+listFolderNames = PathService.getListFolderNames(path)
+print(listFolderNames)
+

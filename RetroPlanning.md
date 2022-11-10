@@ -12,6 +12,3 @@
 6. replace files
 
 
-~. class
-~. redo with pandas
-

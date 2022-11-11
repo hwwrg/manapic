@@ -5,7 +5,7 @@ path = "./img"
 
 print('=======================================')
 pathInfo = PathService.explorPath(path)
-print(pathInfo)
+# print(pathInfo)
 print('=======================================')
 
 listFiles = PathService.getListFiles(path)

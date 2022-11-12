@@ -22,7 +22,7 @@ OOP？
     listRootFolders
 
     def __ini__(self, root):
-    def explorPath(self):
+    def explorFolder(self):
     def rename(self, newName):
     
 
@@ -32,14 +32,15 @@ OOP？
     name
     size
     createdTime
-    year
-    month
-    day
     lastModificationTime
 
     def __ini__(self):
+    def rename(self, newName):
+
 
 3.GlobalService()
+    def readPath(path): return Folder
+    def readFile(fileAddress): return File
     def renameDuplicatedFolderNames(listFolderNames)
     def moveFoldersToRoot(listPaths)
 

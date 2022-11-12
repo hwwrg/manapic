@@ -11,4 +11,6 @@
 
 6. replace files
 
-
+# 2022.11.12
+    update architecture
+    -> GlobalService.readPath()

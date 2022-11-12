@@ -1,0 +1,11 @@
+{
+    "python.formatting.provider": "autopep8",
+    "python.analysis.extraPaths": [
+        "C:\\Program Files\\Python38",
+        "C:\\Program Files\\Python38\\Scripts",
+        "C:\\Program Files\\Python38\\Lib\\site-packages",
+        "./recycleCode",
+        "./model",
+        "./service"
+    ]
+}

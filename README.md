@@ -26,7 +26,6 @@ OOP？
     def rename(self, newName):
     
 
-
 2.File
     path
     name
@@ -42,7 +41,15 @@ OOP？
     def readPath(path): return Folder
     def readFile(fileAddress): return File
     def renameDuplicatedFolderNames(listFolderNames)
-    def moveFoldersToRoot(listPaths)
+    def moveFoldersToRoot(listPaths):
+        while (checkSubFoldersExist())
+    def creatSingleFolder(path, folderName)
+    def creatMultiFolders({} NewFolders)
+
+
+## should have
+    -GC/object destroction
+    -processing bar
 
 
 ## without OOP : abandened

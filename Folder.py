@@ -1,26 +1,24 @@
 class Folder:
 
-    def __init__(self, path):  
-            self.path = path
-            self.name = ''
-            self.size = 0
-            self.createdTime = ''
-            self.lastModificationTime = ''
-            self.listAllFiles = []
-            self.listRootFiles = []
-            self.listAllPaths = []
-            self.listRootPaths = []
-            self.listAllFolders = []
-            self.listRootFolders = []
+    def __init__(self, path):
+        self.path = path
+        self.name = ''
+        self.size = 0
+        self.createdTime = ''
+        self.lastModificationTime = ''
 
-    def explorFolder(self):    
+        # files and folders in root
+        self.listRootFiles = []
+        self.listRootFoldersPaths = []
+        self.listRootFoldersNames = []
+
+        # files and folders in all levels
+        self.listAllFiles = []
+        self.listAllFoldersPaths = []
+        self.listAllFoldersNames = []
+
+    def explorFolder(self):
         pass
- 
-    def rename(self, newName):
-        """_summary_
 
-        Args:
-            newName (_type_): _description_
-        """        
+    def rename(self, newName):
         self.name = newName
-         

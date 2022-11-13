@@ -1,6 +1,7 @@
 
 import GlobalService
 
+
 # path = "./img"
 
 # print('=======================================')
@@ -21,5 +22,9 @@ import GlobalService
 
 
 path = input()
+path = "./img"
 f = GlobalService.readPath(path)
 print(f.path)
+
+
+

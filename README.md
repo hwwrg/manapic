@@ -9,42 +9,23 @@ OOP？
 ## OOP
 # models
 1.Folder
-    path
-    name
-    size
-    createdTime
-    lastModificationTime
-    listAllFiles
-    listRootFiles
-    listAllPaths
-    listRootPaths
-    listAllFolders
-    listRootFolders
-
-    def __ini__(self, root):
-    def explorFolder(self):
-    def rename(self, newName):
-    
 
 2.File
-    path
-    name
-    size
-    createdTime
-    lastModificationTime
-
-    def __ini__(self):
-    def rename(self, newName):
 
 
 3.GlobalService()
+    def generatePath(root, name)
     def readPath(path): return Folder
     def readFile(fileAddress): return File
+    def renameFolder(folder):
     def renameDuplicatedFolderNames(listFolderNames)
     def moveFoldersToRoot(listPaths):
         while (checkSubFoldersExist())
     def creatSingleFolder(path, folderName)
     def creatMultiFolders({} NewFolders)
+
+    def initFolder(folder):
+    def initFile(path):
 
 
 ## should have

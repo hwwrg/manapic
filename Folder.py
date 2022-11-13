@@ -1,5 +1,6 @@
 class Folder:
-
+    """_summary_
+    """
     def __init__(self, path):
         self.path = path
         self.name = ''

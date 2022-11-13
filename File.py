@@ -1,11 +1,17 @@
+import os
+import time
+from datetime import datetime
+
+
 class File:
-    
-    def __init__(self):
-        self.path
-        self.name
-        self.size
-        self.createdTime
-        self.lastModificationTime
-    
-    def rename(self, newName):
-        self.name = newName
+
+    def __init__(self, path):
+        self.path = path
+        self.name = path[path.rfind("\\"):][1:]
+        self.size = os.path.getsize(path)
+        self.createdTime = time.ctime(os.path.getctime(path))
+        self.createdTime = datetime.strptime(
+            self.createdTime, "%a %b %d %H:%M:%S %Y").strftime('%Y-%m-%d %H:%M:%S')
+        self.lastModificationTime = time.ctime(os.path.getmtime(path))
+        self.lastModificationTime = datetime.strptime(
+            self.lastModificationTime, "%a %b %d %H:%M:%S %Y").strftime('%Y-%m-%d %H:%M:%S')

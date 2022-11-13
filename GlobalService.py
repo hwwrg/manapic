@@ -3,6 +3,11 @@ import time
 from datetime import datetime
 
 import Folder as FD
+import File as F
+
+
+def generatePath(root, name):
+    return os.path.join(root, name)
 
 
 def readPath(path):
@@ -22,7 +27,7 @@ def readPath(path):
     folder = FD.Folder(path)
 
     # folder.name
-    folder.name = path[path.rfind("/"):][1:]
+    folder.name = path[path.rfind("\\"):][1:]
 
     # folder.createdTime
     folder.createdTime = time.ctime(os.path.getctime(path))
@@ -61,12 +66,23 @@ def readPath(path):
     return folder
 
 
-path = "./img"
-f = readPath(path)
+def readFile(filePath):
+    """_summary_
 
-print(f.listAllFiles)
-print(f.listAllFoldersPaths)
-print(f.listAllFoldersNames)
+    Args:
+        filePath (String): _description_
+
+    Returns:
+        File.File: _description_
+    """
+    return F.File(filePath)
 
 
-print(f.size / 1024**2)
+def renameFolder(folder, newName):
+
+    root = folder.path[:folder.path.rfind("\\")+1]
+    os.rename(folder.path, f'{root}{newName}' )
+    print(f'New folder name : {newName}')
+
+
+# print(os.name)

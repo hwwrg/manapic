@@ -81,8 +81,41 @@ def readFile(filePath):
 def renameFolder(folder, newName):
 
     root = folder.path[:folder.path.rfind("\\")+1]
-    os.rename(folder.path, f'{root}{newName}' )
+    os.rename(folder.path, f'{root}{newName}')
     print(f'New folder name : {newName}')
 
 
-# print(os.name)
+def renameDuplicatedFolderNames(listfolderpaths, listFolderNames):
+    # list of tuple of name and path
+    listNamePath = list(zip(listFolderNames, listfolderpaths))
+
+    # count number of same folder names
+    folderCountDict = {}
+    for i in range(len(listFolderNames)):
+        if listFolderNames[i] in folderCountDict:
+            folderCountDict[listFolderNames[i]] += 1
+        else:
+            folderCountDict[listFolderNames[i]] = 1
+
+    # find duplicated folders
+    listDuplicatedFolderNamesDict = {}
+    for k, v in folderCountDict.items():
+        if int(v) > 1:
+            listDuplicatedFolderNamesDict[k] = v
+    # listDuplicatedFolderNamesDict = sorted(listDuplicatedFolderNamesDict)
+    print(listDuplicatedFolderNamesDict)
+    
+    # delete non duplicated folders in listNamePath
+    tmp = []
+    for item in listNamePath:
+        if item[0] in listDuplicatedFolderNamesDict:
+            tmp.append(item)
+    listNamePath = tmp
+    listNamePath = sorted(listNamePath, key=lambda x: x[0])
+    print(listNamePath)
+    
+    # 继续 : 遍历 并 实现改名。
+    for namePath in listNamePath:
+        pass
+            
+    

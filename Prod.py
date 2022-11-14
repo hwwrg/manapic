@@ -18,11 +18,13 @@ import GlobalService
 # print(file.lastModificationTime)
 
 # ==renameFolder==
+# path = r'D:\python\apps\manapic\img'
+# folder = GlobalService.readPath(path)
+# # print(folder.size)
+# GlobalService.renameFolder(folder, "newImg")
+
+# ==renameDuplicatedFolderNames==
 path = r'D:\python\apps\manapic\img'
 folder = GlobalService.readPath(path)
-print(folder.size)
-GlobalService.renameFolder(folder, "我觉得还可以")
-
-
-
+GlobalService.renameDuplicatedFolderNames(folder.listAllFoldersPaths, folder.listAllFoldersNames)
 

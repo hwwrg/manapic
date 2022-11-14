@@ -78,31 +78,44 @@ def readFile(filePath):
     return F.File(filePath)
 
 
-def rename(path, newName):
-    root = path[:path.rfind("\\")+1]
-    os.rename(path, f'{root}{newName}')
+def renameFolder(folder, newName):
+
+    root = folder.path[:folder.path.rfind("\\")+1]
+    os.rename(folder.path, f'{root}{newName}')
     print(f'New folder name : {newName}')
 
 
-def renameDuplicatedFolderNames(path):
-    # readPath
-    folder = readPath(path)
-
-
-    listFolderNames = folder.listAllFoldersNames
-    listfolderpaths = folder.listAllFoldersPaths
+def renameDuplicatedFolderNames(listfolderpaths, listFolderNames):
     # list of tuple of name and path
     listNamePath = list(zip(listFolderNames, listfolderpaths))
 
-    # count number of same folder names and rename duplicated folders
-    # 写到这儿了，我觉得不需要这个字典了
+    # count number of same folder names
     folderCountDict = {}
     for i in range(len(listFolderNames)):
-        name = listNamePath[i][0]
-        if name not in folderCountDict:
-            folderCountDict[name] = 0
+        if listFolderNames[i] in folderCountDict:
+            folderCountDict[listFolderNames[i]] += 1
         else:
-            folderCountDict[name] += 1
-            # 写到这儿了
-            test = rename(listNamePath[i][1], f'{name}({folderCountDict[name]})')
-            print(f'Renaming \'{listNamePath[i][1]}\' : {test}')
+            folderCountDict[listFolderNames[i]] = 1
+
+    # find duplicated folders
+    listDuplicatedFolderNamesDict = {}
+    for k, v in folderCountDict.items():
+        if int(v) > 1:
+            listDuplicatedFolderNamesDict[k] = v
+    # listDuplicatedFolderNamesDict = sorted(listDuplicatedFolderNamesDict)
+    print(listDuplicatedFolderNamesDict)
+    
+    # delete non duplicated folders in listNamePath
+    tmp = []
+    for item in listNamePath:
+        if item[0] in listDuplicatedFolderNamesDict:
+            tmp.append(item)
+    listNamePath = tmp
+    listNamePath = sorted(listNamePath, key=lambda x: x[0])
+    print(listNamePath)
+    
+    # 继续 : 遍历 并 实现改名。
+    for namePath in listNamePath:
+        pass
+            
+    

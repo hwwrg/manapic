@@ -19,6 +19,7 @@ OOP？
     def readFile(fileAddress): return File
     def renameFolder(folder):
     def renameDuplicatedFolderNames(listFolderNames)
+    
     def creatFolder(path=none, listPaths[])
     def moveFoldersToRoot(listPaths):
         while (checkSubFoldersExist())
@@ -29,9 +30,12 @@ OOP？
     def initFile(path):
 
 
+
 ## should have
     -GC/object destroction
     -processing bar
+    -ImgService
+
 
 
 ## without OOP : abandened

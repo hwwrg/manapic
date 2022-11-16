@@ -88,6 +88,12 @@ def rename(path, newName):
         return f'FAILURE \n An exception occurred'
 
 
+def checkDuplicatedFolderNamesExist(path):
+    folder = readPath(path)
+    listFolderNames = folder.listAllFoldersNames
+    return True if len(set(listFolderNames)) != len(listFolderNames) else False
+
+
 def renameDuplicatedFolderNames(path):
     # readPath
     folder = readPath(path)

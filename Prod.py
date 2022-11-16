@@ -25,4 +25,8 @@ import GlobalService
 # path = r'D:\python\apps\manapic\img'
 # GlobalService.renameDuplicatedFolderNames(path)
 
+# ==checkDuplicatedFolderNamesExist==
+# path = r'D:\python\apps\manapic\img'
+# duplicatedFolderNamesExist = GlobalService.checkDuplicatedFolderNamesExist(path)
+# print(duplicatedFolderNamesExist)
 

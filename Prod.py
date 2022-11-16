@@ -22,9 +22,7 @@ import GlobalService
 # GlobalService.rename(path, "img")
 
 # ==renameDuplicatedFolderNames==
-path = r'D:\python\apps\manapic\img'
-GlobalService.renameDuplicatedFolderNames(path)
+# path = r'D:\python\apps\manapic\img'
+# GlobalService.renameDuplicatedFolderNames(path)
 
-# folder = GlobalService.readPath(path)
-# GlobalService.renameDuplicatedFolderNames(folder.listAllFoldersPaths, folder.listAllFoldersNames)
 

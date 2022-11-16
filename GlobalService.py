@@ -79,30 +79,31 @@ def readFile(filePath):
 
 
 def rename(path, newName):
-    root = path[:path.rfind("\\")+1]
-    os.rename(path, f'{root}{newName}')
-    print(f'New folder name : {newName}')
+    try:
+        root = path[:path.rfind("\\")+1]
+        os.rename(path, f'{root}{newName}')
+        return f'SUCCESS \n New name : {newName}'
+    except:
+        print('An exception occurred')
+        return f'FAILURE \n An exception occurred'
 
 
 def renameDuplicatedFolderNames(path):
     # readPath
     folder = readPath(path)
-
-
     listFolderNames = folder.listAllFoldersNames
     listfolderpaths = folder.listAllFoldersPaths
     # list of tuple of name and path
     listNamePath = list(zip(listFolderNames, listfolderpaths))
 
     # count number of same folder names and rename duplicated folders
-    # 写到这儿了，我觉得不需要这个字典了
     folderCountDict = {}
     for i in range(len(listFolderNames)):
-        name = listNamePath[i][0]
+        name = listFolderNames[i]
         if name not in folderCountDict:
             folderCountDict[name] = 0
         else:
             folderCountDict[name] += 1
-            # 写到这儿了
-            test = rename(listNamePath[i][1], f'{name}({folderCountDict[name]})')
-            print(f'Renaming \'{listNamePath[i][1]}\' : {test}')
+            test = rename(listfolderpaths[i],
+                          f'{name}({folderCountDict[name]})')
+            print(f'Renaming \'{listfolderpaths[i]}\' : {test}')

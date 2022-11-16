@@ -18,8 +18,9 @@ OOP？
     def readPath(path): return Folder
     def readFile(fileAddress): return File
     def renameFolder(folder):
-    def renameDuplicatedFolderNames(listFolderNames)
-    
+    def renameDuplicatedFolderNames(path)
+
+    def checkDuplicatedFolderNames(path)
     def creatFolder(path=none, listPaths[])
     def moveFoldersToRoot(listPaths):
         while (checkSubFoldersExist())

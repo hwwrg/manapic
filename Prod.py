@@ -2,10 +2,10 @@
 import GlobalService
 
 
+# path = input()
 
 # ==readPath==
-# path = input()
-# path = "./img"
+# path = r"D:\python\apps\manapic\img"
 # f = GlobalService.readPath(path)
 # print(f.path)
 
@@ -29,4 +29,10 @@ import GlobalService
 # path = r'D:\python\apps\manapic\img'
 # duplicatedFolderNamesExist = GlobalService.checkDuplicatedFolderNamesExist(path)
 # print(duplicatedFolderNamesExist)
+
+# ==creatFoldersByMonth==
+path = r'D:\python\apps\manapic\img'
+listNewFolderNames = GlobalService.creatFoldersByMonth(path)
+
+
 

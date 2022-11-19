@@ -2,8 +2,9 @@ import os
 import time
 from datetime import datetime
 
-import Folder as FD
-import File as F
+
+import FolderClass as FD
+import FileClass as F
 
 
 def generatePath(root, name):
@@ -91,7 +92,12 @@ def rename(path, newName):
 def checkDuplicatedFolderNamesExist(path):
     folder = readPath(path)
     listFolderNames = folder.listAllFoldersNames
-    return True if len(set(listFolderNames)) != len(listFolderNames) else False
+    if len(set(listFolderNames)) != len(listFolderNames):
+        print(f"### Path : {path} \n Duplicated folder names EXIST.")
+        return True
+    else:
+        print(f"### Path : {path} \n Duplicated folder names DO NOT EXIST.")
+        return False
 
 
 def renameDuplicatedFolderNames(path):
@@ -113,3 +119,13 @@ def renameDuplicatedFolderNames(path):
             test = rename(listfolderpaths[i],
                           f'{name}({folderCountDict[name]})')
             print(f'Renaming \'{listfolderpaths[i]}\' : {test}')
+
+
+def creatFoldersByMonth(path):
+    """count creattion dates of photos in root path and create folders 
+    with the format yyyy-mm
+
+    Args:
+        path (str): _description_
+    """    
+    print("creatFoldersByMonth")

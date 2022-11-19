@@ -12,7 +12,9 @@ OOP？
 
 2.File
 
+3.Image
 
+# services
 3.GlobalService()
     def generatePath(root, name)
     def readPath(path): return Folder
@@ -20,15 +22,18 @@ OOP？
     def renameFolder(folder):
     def renameDuplicatedFolderNames(path)
     def checkDuplicatedFolderNames(path)
-    
-    def creatFolder(path=none, listPaths[])
+    def creatFoldersByMonth(path=none)
+
+    def modifyFolderName(path)
     def moveFoldersToRoot(listPaths):
         while (checkSubFoldersExist())
-    def creatSingleFolder(path, folderName)
-    def creatMultiFolders({} NewFolders)
 
     def initFolder(folder):
     def initFile(path):
+
+4.ImgService
+
+    def readImg(imgPath)
 
 
 

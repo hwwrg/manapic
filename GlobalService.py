@@ -1,10 +1,11 @@
 import os
 import time
 from datetime import datetime
-
+import imghdr
 
 import FolderClass as FD
 import FileClass as F
+import ImageService as IS
 
 
 def generatePath(root, name):
@@ -128,4 +129,26 @@ def creatFoldersByMonth(path):
     Args:
         path (str): _description_
     """    
-    print("creatFoldersByMonth")
+    # get list of created months
+    print('### Creating folders by year and month')
+    listYearMonth = []
+    listImageTypes = ['jpeg' , 'bmp' , 'jpg' , 'png' , 'tif' , 'gif' , 'pcx' , 'tga' , 'exif' , 'fpx' , 'svg' , 'psd' , 'cdr' , 'pcd' , 'dxf' , 'ufo' , 'eps' , 'ai' , 'raw' , 'WMF' , 'webp' , 'avif' , 'apng']
+    listRootFiles = readPath(path).listRootFiles
+    for file in listRootFiles:
+        filePath = generatePath(path, file)
+        if imghdr.what(filePath) in listImageTypes:
+            dateTimeOriginal = IS.getExifTags(filePath)['DateTimeOriginal']
+            yearMonth = dateTimeOriginal[:7].replace(':', '-')
+            listYearMonth.append(yearMonth)
+        else:
+            print(f'{file} is not a image file.')
+    listYearMonth = list(set(listYearMonth))
+
+    # create folders
+    for ele in listYearMonth:
+        if os.path.exists(generatePath(path, ele)):
+            print(f'{ele} exists already.')
+        else:
+            os.makedirs(generatePath(path, ele))
+            print(f'New folder \'{ele}\' has been created.')
+    

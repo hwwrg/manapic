@@ -3,8 +3,7 @@ from PIL.ExifTags import TAGS
 
 import GlobalService as GS
 
-
-def readImg(imgPath):
+def getExifTags(imgPath):
     """create an <Image> object of file information and ExifTags.
         -ExifTags
         GPSInfo
@@ -52,17 +51,12 @@ def readImg(imgPath):
     Args:
         imgPath (str): _description_
     """    
-    img = Image.open(imgPath)
-    info = img._getexif()
+    image = Image.open(imgPath)
+    info = image._getexif()
     tags = {}
     for k, v in info.items():
         nice = TAGS.get(k)
-        ########### 写到这儿了
-        print(f'self.{nice} = {v}')
-        # print(nice, v)
-        # print('%s (%s) = %s' % (nice, k, v))
+        tags[nice] = v
+    tags.popitem()
+    return tags
 
-root = r"D:\python\apps\manapic\imgForImgService"
-imgName = r"20220820_232743.JPG"
-imgPath = GS.generatePath(root, imgName)
-test = readImg(imgPath)

@@ -11,8 +11,8 @@ OOP？
 1.Folder
 
 2.File
+    ####重写？？？
 
-3.Image
 
 # services
 3.GlobalService()
@@ -32,7 +32,6 @@ OOP？
     def initFile(path):
 
 4.ImgService
-
     def readImg(imgPath)
 
 

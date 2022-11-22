@@ -1,9 +1,10 @@
-# encoding:utf-8
 import GlobalService
+import ImageService
 
 
 # path = input()
 
+# @@@@@@ GlobalService  @@@@@@
 # ==readPath==
 # path = r"D:\python\apps\manapic\img"
 # f = GlobalService.readPath(path)
@@ -31,8 +32,17 @@ import GlobalService
 # print(duplicatedFolderNamesExist)
 
 # ==creatFoldersByMonth==
-path = r'D:\python\apps\manapic\img'
+path = r'D:\python\apps\manapic\imgOneFolder'
 listNewFolderNames = GlobalService.creatFoldersByMonth(path)
+print(listNewFolderNames)
 
 
+
+# @@@@@@ ImageService @@@@@@
+# ==getExifTags==
+# root = r"D:\python\apps\manapic\imgOneFolder"
+# imgName = r"20220820_232743.JPG"
+# imgPath = GlobalService.generatePath(root, imgName)
+# test = ImageService.getExifTags(imgPath)
+# print(test)
 

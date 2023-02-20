@@ -16,13 +16,13 @@ OOP？
 
 # services
 3.GlobalService()
-    def generatePath(root, name)
+    def generateLocation(root, name)
     def readPath(path): return Folder
     def readFile(fileAddress): return File
     def renameFolder(folder):
     def renameDuplicatedFolderNames(path)
     def checkDuplicatedFolderNames(path)
-    def creatFoldersByMonth(path=none)
+    def creatFoldersByMonth(path)
 
     def modifyFolderName(path)
     def moveFoldersToRoot(listPaths):
@@ -31,8 +31,12 @@ OOP？
     def initFolder(folder):
     def initFile(path):
 
+    def createFoldersByDay(path)
+    def createFoldersByMonth(path)
+
 4.ImgService
     def readImg(imgPath)
+    def renamePhotoNames(path)
 
 
 

@@ -43,6 +43,6 @@ import GlobalService as GS
 
 root = r"D:\python\apps\manapic\imgForImgService"
 imgName = r"20220820_232743.JPG"
-imgPath = GS.generatePath(root, imgName)
+imgPath = GS.generateFilePath(root, imgName)
 test = Image(imgPath)
 print(test.__dict__)

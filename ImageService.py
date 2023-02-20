@@ -1,6 +1,7 @@
 from PIL import Image
 from PIL.ExifTags import TAGS
 
+import FileClass as FC
 import GlobalService as GS
 
 def getExifTags(imgPath):
@@ -60,3 +61,36 @@ def getExifTags(imgPath):
     tags.popitem()
     return tags
 
+def renamePhotoNames(path):
+    root = path
+    photoNames = GS.readPath(root).listRootFiles
+    newPhotoNames = []
+
+    # get year, month, day
+    for p in photoNames:
+        # pName = p
+        imgPath = GS.generateFilePath(root, p)
+        try:
+            tags = getExifTags(imgPath)
+            createdTime = tags['DateTimeOriginal']
+        except:
+            createdTime = FC.File(imgPath).createdTime
+        year, month, day = createdTime[0:4], createdTime[5:7], createdTime[8:10]
+        newPhotoNames.append(f'{month}-{year}-{day}.')
+
+    # find duplicated names
+    nameCountDict = {}
+    index = 0
+    for n in newPhotoNames:
+        if n not in nameCountDict:
+            nameCountDict[n] = 0
+        else:
+            nameCountDict[n] += 1
+            newPhotoNames[index] = n.replace('.', f'({nameCountDict[n]}).')
+        index += 1
+
+        # rename files
+    for i in range(len(photoNames)):
+        p = photoNames[i]
+        pFomat = p[p.rfind('.') + 1:]
+        GS.rename(f'{root}\{photoNames[i]}', newPhotoNames[i] + pFomat)

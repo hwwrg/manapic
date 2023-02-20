@@ -1,5 +1,7 @@
+from tkinter.font import names
 import GlobalService
 import ImageService
+import FileClass
 
 
 # path = input()
@@ -31,18 +33,34 @@ import ImageService
 # duplicatedFolderNamesExist = GlobalService.checkDuplicatedFolderNamesExist(path)
 # print(duplicatedFolderNamesExist)
 
-# ==creatFoldersByMonth==
-path = r'D:\python\apps\manapic\imgOneFolder'
-listNewFolderNames = GlobalService.creatFoldersByMonth(path)
-print(listNewFolderNames)
+# ==is_image=
+# root = r'D:\python\apps\manapic\imgOneFolder'
+# img_name = 'ne2.jpg'
+# file = GlobalService.generateLocation(root, img_name)
+# print(GlobalService.is_image(file))
 
+
+# ==createFoldersByMonth==
+# path = r'D:\python\apps\manapic\imgOneFolder'
+# listNewFolderNames = GlobalService.creatFoldersByMonth(path)
+# print(listNewFolderNames)
+
+# ==createFoldersByDay==
+
+path = r'D:\照片备份\rx100 备份'
+listNewFolderNames = GlobalService.createFoldersByDay(path)
+print(listNewFolderNames)
 
 
 # @@@@@@ ImageService @@@@@@
 # ==getExifTags==
-# root = r"D:\python\apps\manapic\imgOneFolder"
-# imgName = r"20220820_232743.JPG"
+# root = r"D:\照片编辑\2023相册\12 - 副本"
+# imgName = r"20221203_123043.JPG"
 # imgPath = GlobalService.generatePath(root, imgName)
 # test = ImageService.getExifTags(imgPath)
 # print(test)
+
+# ==renamePhoto==
+# root = r'D:\照片编辑\2023相册\00'
+# ImageService.renamePhotoNames(root)
 

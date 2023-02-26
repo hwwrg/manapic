@@ -1,2 +1,7 @@
-.vscode
-.idea
+/.vscode/*
+/.idea/*
+*.mp4
+*.zip
+*.jpg
+*.png
+/__pycache__/*

@@ -1,8 +1,11 @@
 from PIL import Image
 from PIL.ExifTags import TAGS
+import subprocess
+import json
 
 import FileClass as FC
 import GlobalService as GS
+
 
 def getExifTags(imgPath):
     """create an <Image> object of file information and ExifTags.
@@ -51,15 +54,16 @@ def getExifTags(imgPath):
 
     Args:
         imgPath (str): _description_
-    """    
+    """
     image = Image.open(imgPath)
     info = image._getexif()
     tags = {}
     for k, v in info.items():
         nice = TAGS.get(k)
         tags[nice] = v
-    tags.popitem()
+    tags.popitem()  # 删除最后一项
     return tags
+
 
 def renamePhotoNames(path):
     root = path
@@ -94,3 +98,16 @@ def renamePhotoNames(path):
         p = photoNames[i]
         pFomat = p[p.rfind('.') + 1:]
         GS.rename(f'{root}\{photoNames[i]}', newPhotoNames[i] + pFomat)
+
+
+def get_video_info(video_file):
+    cmd = ['ffprobe', '-v', 'quiet', '-print_format',
+           'json', '-show_format', '-show_streams', video_file]
+    result = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
+    data = json.loads(result)
+    return data
+
+
+def get_video_creattion_time(video_file):
+    data = get_video_info(video_file)
+    return data['streams'][0]['tags']['creation_time'][:10]

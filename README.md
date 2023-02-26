@@ -16,6 +16,7 @@ OOP？
 
 # services
 3.GlobalService()
+    def progress_bar(count, total, status='')
     def generateLocation(root, name)
     def readPath(path): return Folder
     def readFile(fileAddress): return File
@@ -34,9 +35,11 @@ OOP？
     def createFoldersByDay(path)
     def createFoldersByMonth(path)
 
-4.ImgService
+4.ImageService
     def readImg(imgPath)
     def renamePhotoNames(path)
+    def get_video_info(video_file)
+    def get_video_creattion_time(video_file)
 
 
 

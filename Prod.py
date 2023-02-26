@@ -3,6 +3,7 @@ import GlobalService
 import ImageService
 import FileClass
 
+import json
 
 # path = input()
 
@@ -39,6 +40,12 @@ import FileClass
 # file = GlobalService.generateLocation(root, img_name)
 # print(GlobalService.is_image(file))
 
+# ==is_video==
+# root = r'D:\rx100'
+# vid_name = 'MAH05649.MP4'
+# vid_path = GlobalService.generateFilePath(root, vid_name)
+# rs = GlobalService.is_video(vid_path)
+# print(rs)
 
 # ==createFoldersByMonth==
 # path = r'D:\python\apps\manapic\imgOneFolder'
@@ -46,21 +53,35 @@ import FileClass
 # print(listNewFolderNames)
 
 # ==createFoldersByDay==
-
-path = r'D:\照片备份\rx100 备份'
-listNewFolderNames = GlobalService.createFoldersByDay(path)
-print(listNewFolderNames)
+# path = r'D:\rx100'
+# GlobalService.createFoldersByDay(path)
 
 
 # @@@@@@ ImageService @@@@@@
+# root = r'D:\rx100'
+# vid_name = 'MAH05649.MP4'
+# vid_path = GlobalService.generateFilePath(root, vid_name)
 # ==getExifTags==
-# root = r"D:\照片编辑\2023相册\12 - 副本"
-# imgName = r"20221203_123043.JPG"
-# imgPath = GlobalService.generatePath(root, imgName)
+# imgName = r"DSC08551.JPG"
+# imgPath = GlobalService.generateFilePath(root, imgName)
 # test = ImageService.getExifTags(imgPath)
 # print(test)
+
+# ==get_video_info(video_file)==
+# info = ImageService.get_video_info(vid_path)
+# formatted_data = json.dumps(info, indent=4)
+# print(formatted_data, type(formatted_data))
+# print(info['streams'][0]['tags']['creation_time'])
+
+# ==get_video_creattion_time==
+# print(ImageService.get_video_creattion_time(vid_path))
+
+
+# import ffmpeg
+#
+# metadata = ffmpeg.probe('MAH05648.MP4')
+# print(metadata)
 
 # ==renamePhoto==
 # root = r'D:\照片编辑\2023相册\00'
 # ImageService.renamePhotoNames(root)
-

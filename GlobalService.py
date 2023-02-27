@@ -6,6 +6,7 @@ from PIL import Image
 import subprocess
 import sys
 from tqdm import tqdm
+import shutil
 
 
 import FolderClass as FD
@@ -24,6 +25,8 @@ def progress_bar(count, total, status=''):
           (bar, percents, '%', status), end='', flush=True)
 
 # generate the location of a file
+
+
 def generateFilePath(root, name):
     return os.path.join(root, name)
 
@@ -203,7 +206,7 @@ def createFoldersByDay(path):
     Args:
         path (str): _description_
     """
-    # get list of created months
+    # get list of created days
     print('*** Creating folders by year-month-day')
     list_year_mont_day = []
     listRootFiles = readPath(path).listRootFiles
@@ -233,3 +236,24 @@ def createFoldersByDay(path):
         else:
             os.makedirs(generateFilePath(path, ele))
             print(f'New folder \'{ele}\' has been created.')
+
+
+def remove_files_to_folder_by_creation_day(path):
+    listRootFiles = readPath(path).listRootFiles
+    with tqdm(total=len(listRootFiles), desc='*** Moving files', ascii=True) as pbar:
+        for file in listRootFiles:
+            filePath = generateFilePath(path, file)
+            year_month_day = ''
+            if is_image(filePath):     # imghdr.what() : read format
+                dateTimeOriginal = IS.getExifTags(filePath)['DateTimeOriginal']
+                year_month_day = dateTimeOriginal[:10].replace(':', '-')
+            elif is_video(filePath):
+                year_month_day = IS.get_video_creattion_time(filePath)
+            
+            try:
+                shutil.move(filePath, generateFilePath(path, year_month_day))
+            except:
+                print(f'{file} is not a image or video file.')
+            # Update the progress bar
+            pbar.update(1)
+            # time.sleep(0.1)  # Simulate some work

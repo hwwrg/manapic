@@ -4,8 +4,41 @@ import ImageService
 import FileClass
 
 import json
+import shutil
+
+
 
 # path = input()
+
+# @@@@@@ ImageService @@@@@@
+# root = r'D:\rx100'
+# vid_name = 'MAH05649.MP4'
+# vid_path = GlobalService.generateFilePath(root, vid_name)
+# ==getExifTags==
+# imgName = r"DSC08551.JPG"
+# imgPath = GlobalService.generateFilePath(root, imgName)
+# test = ImageService.getExifTags(imgPath)
+# print(test)
+
+# ==get_video_info(video_file)==
+# info = ImageService.get_video_info(vid_path)
+# formatted_data = json.dumps(info, indent=4)
+# print(formatted_data, type(formatted_data))
+# print(info['streams'][0]['tags']['creation_time'])
+
+# ==get_video_creattion_time==
+# print(ImageService.get_video_creattion_time(vid_path))
+
+
+# import ffmpeg
+#
+# metadata = ffmpeg.probe('MAH05648.MP4')
+# print(metadata)
+
+# ==renamePhoto==
+# root = r'D:\照片编辑\2023相册\00'
+# ImageService.renamePhotoNames(root)
+
 
 # @@@@@@ GlobalService  @@@@@@
 # ==readPath==
@@ -56,32 +89,10 @@ import json
 # path = r'D:\rx100'
 # GlobalService.createFoldersByDay(path)
 
-
-# @@@@@@ ImageService @@@@@@
+# ==remove_files_to_folder_by_creation_day==
 # root = r'D:\rx100'
-# vid_name = 'MAH05649.MP4'
-# vid_path = GlobalService.generateFilePath(root, vid_name)
-# ==getExifTags==
-# imgName = r"DSC08551.JPG"
-# imgPath = GlobalService.generateFilePath(root, imgName)
-# test = ImageService.getExifTags(imgPath)
-# print(test)
-
-# ==get_video_info(video_file)==
-# info = ImageService.get_video_info(vid_path)
-# formatted_data = json.dumps(info, indent=4)
-# print(formatted_data, type(formatted_data))
-# print(info['streams'][0]['tags']['creation_time'])
-
-# ==get_video_creattion_time==
-# print(ImageService.get_video_creattion_time(vid_path))
+# GlobalService.remove_files_to_folder_by_creation_day(root)
 
 
-# import ffmpeg
-#
-# metadata = ffmpeg.probe('MAH05648.MP4')
-# print(metadata)
 
-# ==renamePhoto==
-# root = r'D:\照片编辑\2023相册\00'
-# ImageService.renamePhotoNames(root)
+

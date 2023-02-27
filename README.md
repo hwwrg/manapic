@@ -35,6 +35,8 @@ OOP？
     def createFoldersByDay(path)
     def createFoldersByMonth(path)
 
+    def remove_files_to_folder_by_creation_day(path)
+
 4.ImageService
     def readImg(imgPath)
     def renamePhotoNames(path)

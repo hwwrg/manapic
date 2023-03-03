@@ -2,6 +2,12 @@
 A little program reads photo ExifTags and regroup them by month of year.
 
 
+### TODO
+1.Optimize : GlobalService.createFoldersByDay(path) and GlobalService.remove_files_to_folder_by_creation_day(path) ==> do not need to verify if a file is a photo or video, read exiftag or file.createdTime
+
+2.debug : ImageService.renamePhotoNames(path) ==> wrong date
+
+
 ### architecture
 
 OOP？
@@ -41,7 +47,7 @@ OOP？
     def readImg(imgPath)
     def renamePhotoNames(path)
     def get_video_info(video_file)
-    def get_video_creattion_time(video_file)
+    def get_video_creation_time(video_file)
 
 
 

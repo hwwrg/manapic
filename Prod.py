@@ -2,6 +2,7 @@ from tkinter.font import names
 import GlobalService
 import ImageService
 import FileClass
+import os
 
 import json
 import shutil
@@ -26,7 +27,7 @@ import shutil
 # print(formatted_data, type(formatted_data))
 # print(info['streams'][0]['tags']['creation_time'])
 
-# ==get_video_creattion_time==
+# ==get_video_creation_time==
 # print(ImageService.get_video_creattion_time(vid_path))
 
 
@@ -38,6 +39,20 @@ import shutil
 # ==renamePhoto==
 # root = r'D:\照片编辑\2023相册\00'
 # ImageService.renamePhotoNames(root)
+
+# ==process_folder==
+# def process_folder(folder_path):
+#     for file_name in os.listdir(folder_path):
+#         file_path = os.path.join(folder_path, file_name)
+#         if os.path.isfile(file_path) and file_name.endswith(".jpg"):
+#             ImageService.rotate_image_with_exif_fix(file_path)
+
+# folder_path = r"D:\照片备份\2012-2月 回老家"
+# process_folder(folder_path)
+
+# img_path = r"D:\照片备份\2012-2月 回老家\IMG_5721.JPG"
+# ImageService.rotate_image_with_exif_fix(img_path)
+
 
 
 # @@@@@@ GlobalService  @@@@@@
@@ -86,12 +101,12 @@ import shutil
 # print(listNewFolderNames)
 
 # ==createFoldersByDay==
-# path = r'D:\rx100'
-# GlobalService.createFoldersByDay(path)
+path = r'D:\照片备份\新建文件夹'
+GlobalService.createFoldersByDay(path)
 
 # ==remove_files_to_folder_by_creation_day==
-# root = r'D:\rx100'
-# GlobalService.remove_files_to_folder_by_creation_day(root)
+# path = r'D:\rx100'
+GlobalService.remove_files_to_folder_by_creation_day(path)
 
 
 

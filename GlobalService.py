@@ -8,9 +8,8 @@ import sys
 from tqdm import tqdm
 import shutil
 
-
 import FolderClass as FD
-import FileClass as F
+import FileClass as FC
 import ImageService as IS
 
 # Progress bar function
@@ -96,7 +95,7 @@ def readFile(filePath):
     Returns:
         File.File: _description_
     """
-    return F.File(filePath)
+    return FC.File(filePath)
 
 
 def rename(path, newName):
@@ -216,12 +215,17 @@ def createFoldersByDay(path):
         for file in listRootFiles:
             filePath = generateFilePath(path, file)
             if is_image(filePath):     # imghdr.what() : read format
-                dateTimeOriginal = IS.getExifTags(filePath)['DateTimeOriginal']
-                year_month_day = dateTimeOriginal[:10].replace(':', '-')
-                list_year_mont_day.append(year_month_day)
+                try:
+                    dateTimeOriginal = IS.getExifTags(filePath)['DateTimeOriginal']
+                    year_month_day = dateTimeOriginal[:10].replace(':', '-')
+                    list_year_mont_day.append(year_month_day)
+                except:
+                    createdTime = FC.File(filePath).createdTime
+                    year, month, day = createdTime[0:4], createdTime[5:7], createdTime[8:10]
+                    list_year_mont_day.append(f'{year}-{month}-{day}.')
             elif is_video(filePath):
                 list_year_mont_day.append(
-                    IS.get_video_creattion_time(filePath))
+                    IS.get_video_creation_time(filePath))
             else:
                 print(f'{file} is not a image or video file.')
             # Update the progress bar
@@ -245,15 +249,23 @@ def remove_files_to_folder_by_creation_day(path):
             filePath = generateFilePath(path, file)
             year_month_day = ''
             if is_image(filePath):     # imghdr.what() : read format
-                dateTimeOriginal = IS.getExifTags(filePath)['DateTimeOriginal']
-                year_month_day = dateTimeOriginal[:10].replace(':', '-')
+                try:
+                    dateTimeOriginal = IS.getExifTags(filePath)['DateTimeOriginal']
+                    year_month_day = dateTimeOriginal[:10].replace(':', '-')
+                except:
+                    createdTime = FC.File(filePath).createdTime
+                    year, month, day = createdTime[0:4], createdTime[5:7], createdTime[8:10]
+                    year_month_day = f'{year}-{month}-{day}'
             elif is_video(filePath):
-                year_month_day = IS.get_video_creattion_time(filePath)
+                year_month_day = IS.get_video_creation_time(filePath)
+            else:
+                print(f'{file} is not a image or video file.')
             
             try:
                 shutil.move(filePath, generateFilePath(path, year_month_day))
             except:
-                print(f'{file} is not a image or video file.')
+                print(f'*** An error occurd when moving file : {file} ')
+                
             # Update the progress bar
             pbar.update(1)
             # time.sleep(0.1)  # Simulate some work

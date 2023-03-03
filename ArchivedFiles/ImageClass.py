@@ -1,6 +1,6 @@
-import FileClass as F
+import FileClass as FC
 
-class Image(F.File):
+class Image(FC.File):
     """ExifTags as attributes
     use Image.__dict__() to get all attributes in a dictionnary
 
@@ -8,7 +8,7 @@ class Image(F.File):
         F (File): _description_
     """    
     def __init__(self, path):
-        F.File.__init__(self, path)
+        FC.File.__init__(self, path)
         self.GPSInfo = ''
         self.Make = ''
         self.Model = ''

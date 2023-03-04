@@ -3,9 +3,9 @@ A little program reads photo ExifTags and regroup them by month of year.
 
 
 ### TODO
-1.Optimize : GlobalService.createFoldersByDay(path) and GlobalService.remove_files_to_folder_by_creation_day(path) ==> do not need to verify if a file is a photo or video, read exiftag or file.createdTime
+1.debug : ImageService.renamePhotoNames(path) ==> wrong date
 
-2.debug : ImageService.renamePhotoNames(path) ==> wrong date
+2.Optimize : GlobalService.createFoldersByDay(path) and GlobalService.remove_files_to_folder_by_creation_day(path) ==> do not need to verify if a file is a photo or video, read exiftag or file.createdTime
 
 
 ### architecture

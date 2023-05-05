@@ -36,9 +36,9 @@ import shutil
 # metadata = ffmpeg.probe('MAH05648.MP4')
 # print(metadata)
 
-# ==renamePhoto==
-# root = r'D:\照片编辑\2023相册\00'
-# ImageService.renamePhotoNames(root)
+# ==rename by creationg date==
+root = r'D:\test'
+ImageService.renamePhotoNames(root)
 
 # ==process_folder==
 # def process_folder(folder_path):
@@ -69,8 +69,9 @@ import shutil
 # print(file.createdTime)
 # print(file.lastModificationTime)
 
-# ==rename==
+# ==rename by given new name==
 # path = r'D:\python\apps\manapic\newImg'
+# path = r'D:\test'
 # GlobalService.rename(path, "img")
 
 # ==renameDuplicatedFolderNames==
@@ -101,13 +102,12 @@ import shutil
 # print(listNewFolderNames)
 
 # ==createFoldersByDay==
-path = r'D:\照片备份\新建文件夹'
-GlobalService.createFoldersByDay(path)
+# path = r'D:\photo_album'
+# GlobalService.createFoldersByDay(path)
 
 # ==remove_files_to_folder_by_creation_day==
 # path = r'D:\rx100'
-GlobalService.remove_files_to_folder_by_creation_day(path)
-
+# GlobalService.remove_files_to_folder_by_creation_day(path)
 
 
 

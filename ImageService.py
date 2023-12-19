@@ -92,14 +92,15 @@ def renamePhotoNames(path):
             nameCountDict[n] = 0
         else:
             nameCountDict[n] += 1
-            newPhotoNames[index] = n.replace('.', f'({nameCountDict[n]}).')
+            newPhotoNames[index] = n + f'({nameCountDict[n]})'
         index += 1
+    print(newPhotoNames)
 
-        # rename files
+    # rename files
     for i in range(len(photoNames)):
         p = photoNames[i]
         pFomat = p[p.rfind('.') + 1:]
-        GS.rename(f'{root}\{photoNames[i]}', newPhotoNames[i] + pFomat)
+        GS.rename(f'{root}\{photoNames[i]}', newPhotoNames[i] + '.' + pFomat)
 
 
 def get_video_info(video_file):
